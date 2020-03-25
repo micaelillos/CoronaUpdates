@@ -26,7 +26,6 @@ keyring==18.0.1
 keyrings.alt==3.1.1
 Mako==1.1.2
 MarkupSafe==1.1.1
-pgmagick==0.7.4
 Pillow==6.2.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
