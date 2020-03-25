@@ -25,7 +25,7 @@ def update_data():
         glo_data
     except NameError:
         first_time = True
-    if t.time() - time_checked > 600 or first_time:
+    if first_time or t.time() - time_checked > 600:
         last_country_data = scraping_details.coronatime('israel')
         israel_data = last_country_data
         glo_data = scraping_details.glo()
