@@ -12,7 +12,7 @@ global glo_data
 global time_checked
 global top_countries
 app = Flask(__name__)
-
+app.secret_key = "super secret key"
 
 def update_data():
     global last_country_data
@@ -112,5 +112,4 @@ def send_emails():
 if __name__ == '__main__':
     global time_checked
     time_checked = t.time()
-    app.secret_key = 'the random string'
     app.run()
