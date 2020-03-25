@@ -112,6 +112,4 @@ def send_emails():
 if __name__ == '__main__':
     global time_checked
     time_checked = t.time()
-    app.secret_key = 'super_secret_key'
-    app.debug = True
     app.run()
