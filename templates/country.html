@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <title>My form</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        .jumbotron{
+        min-height:100%;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Corona Updates</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav nav-pills">
+            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Index</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-7 clo-xs-8">
+            <div class="jumbotron jumbotron-fluid mr-lg-0 mr-md-0 mr-xl-0 ml-lg-0 ml-md-0 ml-xl-0   mb-lg-0 mb-md-0 mb-xl-0" style="margin-top:20px; margin-left:20px; margin-right:20px; margin-bottom:200px;">
+                <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
+
+                    <h1> Info about {{ arr[0] }}:</h1>
+                    <h1> Sick people: {{ arr[1] }}</h1>
+                    <h1> New Cases: {{ arr[2] }}</h1>
+                    <h1> Deaths: {{ arr[3] }}</h1>
+                    <h1> New Deaths: {{arr[4]}}</h1>
+                    <h1> Recoveries: {{ arr[5] }}</h1>
+                    <h1> Active Cases: {{arr[6]}}</h1>
+                    <h1> Critical Cases: {{arr[7]}}</h1>
+                    <br>
+                    <form method="POST">
+                        <h2 class=""> Want to learn about another country? Enter it here: </h2> <br>
+                        <input name="u">
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="jumbotron jumbotron-fluid ml-lg-0 ml-md-0 ml-xl-0 mr-lg-0 mr-md-0 mr-xl-0 mb-lg-0 mb-md-0 mb-xl-0 " style="margin-top:20px; margin-right:20px; margin-left:20px;">
+                <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
+
+                    <p class="display-4">Most Infected Countries:</p>
+                    <h2>{{top_c[0]}}:</h2>
+                    <p class="lead">Infected: {{top_c[1]}}:</p>
+                    <p class="lead">Dead: {{top_c[3]}}:</p>
+                    <h2>{{top_c[10]}}:</h2>
+                    <p class="lead">Infected: {{top_c[11]}}:</p>
+                    <p class="lead">Dead: {{top_c[13]}}:</p>
+                    <h2>{{top_c[20]}}:</h2>
+                    <p class="lead">Infected: {{top_c[21]}}:</p>
+                    <p class="lead">Dead: {{top_c[23]}}:</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

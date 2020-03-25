@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <title>Information</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Corona Updates</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav nav-pills">
+            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Index</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="col">
+        <div class="jumbotron jumbotron-fluid " style="margin-top:20px; margin-left:20px; margin-right:20px;">
+            <div class="lead" style="margin-left:20px;">
+                <h1>Basic protective measures against the new coronavirus</h1>
+
+
+                <div class="sf-content-block content-block">
+                    <div><p>Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website
+                        and through your
+                        national and local public health authority. Most people who become infected experience mild
+                        illness and recover,
+                        but it can be more severe for others. Take care of your health and protect others by doing the
+                        following:</p>
+                    </div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div>
+                        <iframe class="embed-responsive-item " width="560" height="475" src="https://www.youtube.com/embed/bPITHEiFWLc" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen=""></iframe>
+                    </div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>Wash your hands frequently</h3>
+                        <p>Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with
+                            soap and
+                            water.</p>
+                        <p><strong>Why?</strong> Washing your hands with soap and water or using alcohol-based hand rub
+                            kills viruses
+                            that may be on your hands.</p></div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>Maintain social distancing</h3>
+                        <p>Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or
+                            sneezing.</p>
+                        <p><strong>Why?</strong> When someone coughs or sneezes they spray small liquid droplets from
+                            their nose or
+                            mouth which may contain virus. If you are too close, you can breathe in the droplets,
+                            including the COVID-19
+                            virus if the person coughing has the disease.</p>
+                        <p>
+                            <iframe width="560" height="475" src="https://www.youtube.com/embed/6Ooz1GZsQ70"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="">
+                                &amp;nbsp;
+                            </iframe>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>Avoid touching eyes, nose and mouth</h3>
+                        <p><strong>Why?&nbsp;</strong>Hands touch many surfaces and can pick up viruses. Once
+                            contaminated, hands can
+                            transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body
+                            and can make you
+                            sick.</p></div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>Practice respiratory hygiene</h3>
+                        <p>Make sure you, and the people around you, follow good respiratory hygiene. This means
+                            covering your mouth and
+                            nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used
+                            tissue
+                            immediately.</p>
+                        <p><strong>Why?</strong> Droplets spread virus. By following good respiratory hygiene you
+                            protect the people
+                            around you from viruses such as cold, flu and COVID-19.</p></div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>If you have fever, cough and difficulty breathing, seek medical care early</h3>
+                        <p>Stay home if you feel unwell. If you have a fever, cough and difficulty breathing, seek
+                            medical attention and
+                            call in advance. Follow the directions of your local health authority. </p>
+                        <p><strong>Why?</strong> National and local authorities will have the most up to date
+                            information on the
+                            situation in your area. Calling in advance will allow your health care provider to quickly
+                            direct you to the
+                            right health facility. This will also protect you and help prevent spread of viruses and
+                            other infections.
+                        </p>
+                        <p>
+                            <iframe width="560" height="475" src="https://www.youtube.com/embed/qF42gZVm1Bo"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="">
+                                &amp;nbsp;
+                            </iframe>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div><h3>Stay informed and follow advice given by your healthcare provider</h3>
+                        <p>Stay informed on the latest developments about COVID-19. Follow advice given by your
+                            healthcare provider,
+                            your national and local public health authority or your employer on how to protect yourself
+                            and others from
+                            COVID-19.</p>
+                        <p><strong>Why?</strong> National and local authorities will have the most up to date
+                            information on whether
+                            COVID-19 is spreading in your area. They are best placed to advise on what people in your
+                            area should be
+                            doing to protect themselves.</p>
+                        <p>&nbsp;</p></div>
+
+                </div>
+
+                <div class="section-heading">
+
+                    <h1>Protection measures for persons who are in or have recently visited (past 14 days) areas where
+                        COVID-19 is
+                        spreading</h1>
+
+                </div>
+
+
+                <div class="sf-content-block content-block">
+                    <div>
+                        <ul>
+                            <li>Follow the guidance outlined above.</li>
+                        </ul>
+                        <ul>
+                            <li>Stay at home if you begin to feel unwell, even with mild symptoms such as headache and
+                                slight runny
+                                nose, until you recover. <strong>Why?</strong> Avoiding contact with others and visits
+                                to medical
+                                facilities will allow these facilities to operate more effectively and help protect you
+                                and others from
+                                possible COVID-19 and other viruses.
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>If you develop fever, cough and difficulty breathing, seek medical advice promptly as
+                                this may be due to
+                                a respiratory infection or other serious condition. Call in advance and tell your
+                                provider of any recent
+                                travel or contact with travelers. <strong>Why?</strong>&nbsp;Calling in advance will
+                                allow your health
+                                care provider to quickly direct you to the right health facility. This will also help to
+                                prevent
+                                possible spread of COVID-19 and other viruses.
+                            </li>
+                        </ul>
+                        <p>&nbsp;</p></div>
+                        <h6>Taken from the World Health Organization Website for more information <a href="https://www.who.int/">click here</a></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
