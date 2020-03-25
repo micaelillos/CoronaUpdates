@@ -10,7 +10,6 @@ click==7.1.1
 configparser==3.5.0b2
 constantly==15.1.0
 cryptography==2.8
-dbus-python==1.2.12
 deluge==2.0.3
 entrypoints==0.3
 enum34==1.1.6
