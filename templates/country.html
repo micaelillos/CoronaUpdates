@@ -21,6 +21,7 @@
         min-height:100%;
         }
 
+
     </style>
 </head>
 <body>
@@ -32,10 +33,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills">
-            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Index</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
         </ul>
@@ -45,7 +46,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-7 clo-xs-8">
-            <div class="jumbotron jumbotron-fluid mr-lg-0 mr-md-0 mr-xl-0 ml-lg-0 ml-md-0 ml-xl-0   mb-lg-0 mb-md-0 mb-xl-0" style="margin-top:20px; margin-left:20px; margin-right:20px; margin-bottom:200px;">
+            <div class="jumbotron jumbotron-fluid mr-lg-0 mr-md-0 mr-xl-0 ml-lg-0 ml-md-0 ml-xl-0   mb-lg-0 mb-md-0 mb-xl-0"
+                 style="margin-top:20px; margin-left:20px; margin-right:20px; margin-bottom:200px;">
                 <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
 
                     <h1> Info about {{ arr[0] }}:</h1>
@@ -66,19 +68,31 @@
             </div>
         </div>
         <div class="col">
-            <div class="jumbotron jumbotron-fluid ml-lg-0 ml-md-0 ml-xl-0 mr-lg-0 mr-md-0 mr-xl-0 mb-lg-0 mb-md-0 mb-xl-0 " style="margin-top:20px; margin-right:20px; margin-left:20px;">
+            <div class="jumbotron jumbotron-fluid ml-lg-0 ml-md-0 ml-xl-0 mr-lg-0 mr-md-0 mr-xl-0 mb-lg-0 mb-md-0 mb-xl-0 "
+                 style="margin-top:20px; margin-right:20px; margin-left:20px;">
                 <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
 
                     <p class="display-4">Most Infected Countries:</p>
                     <h2>{{top_c[0]}}:</h2>
                     <p class="lead">Infected: {{top_c[1]}}:</p>
                     <p class="lead">Dead: {{top_c[3]}}:</p>
+                    <form action="" method="POST">
+                        <button type="submit" name="load_more_data" value="1">See more</button>
+                    </form>
+                    <br>
                     <h2>{{top_c[10]}}:</h2>
                     <p class="lead">Infected: {{top_c[11]}}:</p>
                     <p class="lead">Dead: {{top_c[13]}}:</p>
+                    <form action="" method="POST">
+                        <button type="submit" name="load_more_data" value="2">See more</button>
+                    </form>
+                    <br>
                     <h2>{{top_c[20]}}:</h2>
                     <p class="lead">Infected: {{top_c[21]}}:</p>
                     <p class="lead">Dead: {{top_c[23]}}:</p>
+                    <form action="" method="POST">
+                        <button type="submit" name="load_more_data" value="3">See more</button>
+                    </form>
 
                 </div>
             </div>

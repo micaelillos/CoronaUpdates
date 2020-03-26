@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    <title>Index</title>
+    <title>Home</title>
     <style type="text/css">
         #stats{
         min-height:100%;
@@ -46,10 +46,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills">
-            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Index</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
         </ul>
@@ -93,6 +93,8 @@
                     <h4 class="lead"> Total Cases: {{ glo[0] }}</h4>
                     <h4 class="lead"> Total Deaths: {{ glo[1] }}</h4>
                     <h4 class="lead"> Total Recoveries: {{ glo[2] }}</h4>
+                    <h4 class="lead"> Death Percentage: {{ glo[3] }}%</h4>
+
                 </div>
             </div>
         </div>

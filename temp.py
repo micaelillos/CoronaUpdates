@@ -1,6 +1,5 @@
 import time
-
-s = time.time()
-time.sleep(65)
-n = time.time()
-print(n-s)
+dic = {}
+var = 'hey'
+dic[var] = 'hello'
+print(dic[var])

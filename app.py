@@ -12,9 +12,32 @@ global glo_data
 global time_checked
 global top_countries
 app = Flask(__name__)
-app.secret_key = "super secret key"
+arr = [1, 2, 3]
+posts = [
+    {
+        'author': 'corey',
+        'title': 'Blog post 1',
+        'content': 'iwkjdiwdiwndiwndkiwndw',
+        'date': 'NOW'
+    },
+    {
+        'author': 'david',
+        'title': 'Blog post 2',
+        'content': 'iwkjdiwdiwndiwndkiwndw',
+        'date': '2 yars ago'
+    }
 
-def update_data():
+]
+
+
+def remove_comas(num):
+    new_num = ''
+    for i in num:
+        if i != ',':
+            new_num += i
+    return int(new_num)
+
+def update_data(ip):
     global last_country_data
     global israel_data
     global glo_data
@@ -22,40 +45,58 @@ def update_data():
     global time_checked
     first_time = False
     try:
-        glo_data
-    except NameError:
+        glo_data[ip]
+    except KeyError:
         first_time = True
-    if first_time or t.time() - time_checked > 600:
-        last_country_data = scraping_details.coronatime('israel')
-        israel_data = last_country_data
-        glo_data = scraping_details.glo()
-        top_countries = scraping_details.getop()
-        time_checked = t.time()
+    if first_time or t.time() - time_checked[ip] > 600:
+        da = scraping_details.coronatime('israel')
+        last_country_data[ip] = da
+
+        israel_data[ip] = last_country_data
+        glo_data[ip] = scraping_details.glo()
+        top_countries[ip] = scraping_details.getop()
+        time_checked[ip] = t.time()
 
 
 @app.route('/')
 @app.route('/index/')
 def index():
-    update_data()
+    ip = (request.headers.get('X-Forwarded-For', request.remote_addr))
+    update_data(ip)
     global israel_data
     global glo_data
-    arr = israel_data
-    glo = glo_data
+    arr = israel_data[ip]
+    arr = arr[ip]
+    glo = glo_data[ip]
+    # adding death percentage
+    t = remove_comas(glo[0])
+    d = remove_comas(glo[1])
+    glo.append('{0:.2f}'.format(d/t*100))
+
     return render_template('index.html', arr=arr, glo=glo)
 
 
 @app.route('/form/', methods=['GET', 'POST'])
 def country(see_more=''):
-    print(see_more)
+    ip = (request.headers.get('X-Forwarded-For', request.remote_addr))
     global last_country_data
-    update_data()
+    update_data(ip)
     if request.method == 'POST':
-        text = request.form['u']
+        try:
+            text = request.form['u']
+        except:
+            c = request.form['load_more_data']
+            user_top_countries = top_countries[ip]
+            text = user_top_countries[(int(c) - 1) * 10]
+
+
         arr = scraping_details.coronatime(text)
-        last_country_data = arr
+        last_country_data[ip] = arr
+
     else:
-        arr = last_country_data
-    return render_template('country.html', arr=arr, top_c=top_countries)
+        arr = last_country_data[ip]
+
+    return render_template('country.html', arr=arr, top_c=top_countries[ip])
 
 
 @app.route('/city/', methods=['GET', 'POST'])
@@ -105,11 +146,23 @@ def about():
 
 @app.route('/emailadresslist/')
 def send_emails():
-    send_all_mails(False)
+    send_all_mails(True)
     return 'done'
 
 
 if __name__ == '__main__':
+    global last_country_data
+    global israel_data
+    global glo_data
+    global top_countries
     global time_checked
-    time_checked = t.time()
-    app.run()
+
+    last_country_data = {}
+    israel_data = {}
+    glo_data = {}
+    top_countries = {}
+    time_checked = {}
+
+    app.secret_key = 'super_secret_key'
+    app.debug = True
+    app.run(host='0.0.0.0', port=5000)

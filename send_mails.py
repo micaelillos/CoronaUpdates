@@ -82,12 +82,14 @@ def send_all_mails(update_list=False):
     file.close()
 
     if update_list is True:
-        os.remove('list_of_places')
-        file = open('list_of_places', 'w')
+
+        file = open('list_of_places', 'a')
+        old_places = get_list_of_places()
         places = get_list_of_places('list_of_new_places')
         for line in places:
-            file.writelines(line)
-            file.writelines('\n')
+            if line not in old_places:
+                file.write(line)
+                file.writelines('\n')
 
         file.close()
 

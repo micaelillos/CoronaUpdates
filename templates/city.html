@@ -26,10 +26,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills">
-            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Index</a></li>
+            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
         </ul>
@@ -40,7 +40,7 @@
         <div class="jumbotron jumbotron-fluid " style="margin-top:20px; margin-left:20px; margin-right:20px;">
             <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
                 <h1> Enter a City Name:</h1>
-                <p> works only for cities in Israel</p>
+                <p> works only for cities in Israel (City Name must be in Hebrew)</p>
                 <br>
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -56,7 +56,7 @@
 
                     <p>Name: <input type='text' size='20' name='name'></p>
 
-                    <input type='submit' value='submit'>
+                    <input type='submit' value='Submit'>
 
                 </form>
                 <br>
