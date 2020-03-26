@@ -1,5 +1,2 @@
-import time
-dic = {}
-var = 'hey'
-dic[var] = 'hello'
-print(dic[var])
+s = '11.3'
+print(int(s))

@@ -5,6 +5,7 @@ import scraping_details
 from city_info import get_places
 from send_mails import send_all_mails
 from lists import *
+from city_scraping import city_places
 
 global last_country_data
 global israel_data
@@ -36,6 +37,7 @@ def remove_comas(num):
         if i != ',':
             new_num += i
     return int(new_num)
+
 
 def update_data(ip):
     global last_country_data
@@ -104,7 +106,7 @@ def city():  # city in israel
     if request.method == 'POST':
         city_name = request.form['name']
         print(city_name)
-        places = get_places(city_name)
+        places = city_places(city_name)
         msg = 'List of places in ' + city_name + ':'
         if not places:
             msg = 'no places in ' + city_name
