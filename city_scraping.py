@@ -7,6 +7,19 @@ class city_scraping:
         pass
 
 
+def get_value(x):
+    num = ''
+    numbers = ['.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    if x[0] in numbers:
+        num += x[0]
+    i = 1
+    while x[i] in numbers:
+        num += x[i]
+        i += 1
+    num = num.split('.')
+    return int(num[0]) + int(num[1])*100
+
+
 def city_places(city):
     stre = "https://www.gov.il/he/departments/news/" + city + "-corona"
 
@@ -42,4 +55,5 @@ def city_places(city):
         line = file.readline()
 
     file.close()
+    data.sort(key=lambda x: get_value(x), reverse=True)
     return data
