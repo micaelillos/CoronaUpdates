@@ -14,6 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:900&display=swap" rel="stylesheet">
     <title>Home</title>
     <style type="text/css">
         #stats{
@@ -30,7 +31,9 @@
     min-width: 100%;
     min-height: 100%;
 }
-
+.navbar-brand{
+font-family: 'Nunito', sans-serif;
+}
 
 
     </style>
@@ -46,7 +49,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills">
-            <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Home</a></li>
+            <li class="nav-item active"><a class="nav-link active" href="{{url_for('index')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
@@ -67,7 +70,7 @@
 
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6  mr-0 ">
-            <div class="jumbotron" id="stats">
+            <div class="jumbotron" id="stats" style="background:#e3f2fd !important;">
                 <h1 class="display-4">Israel Stats:</h1>
 
                 <p class="lead">Amount Of Cases: {{ arr[1] }}</p>
@@ -87,7 +90,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="jumbotron jumbotron-fluid " style="margin-top:20px; padding-top:20px;">
+            <div class="jumbotron jumbotron-fluid " style="margin-top:20px; padding-top:20px;background:#e3f2fd !important;">
                 <div class="" style="padding-top:5px;  margin-left:30px;">
                     <h3 class="display-4">Global Stats:</h3>
                     <h4 class="lead"> Total Cases: {{ glo[0] }}</h4>

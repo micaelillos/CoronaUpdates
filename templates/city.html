@@ -16,6 +16,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:900&display=swap" rel="stylesheet">
+    <style>
+        .navbar-brand{
+font-family: 'Nunito', sans-serif;
+}
+
+    </style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -28,7 +36,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item active"><a class="nav-link" href="{{url_for('index')}}">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{{url_for('city')}}">City</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
@@ -37,10 +45,11 @@
 </nav>
 <div class="row">
     <div class="col">
-        <div class="jumbotron jumbotron-fluid " style="margin-top:20px; margin-left:20px; margin-right:20px;">
+        <div class="jumbotron jumbotron-fluid "
+             style="margin-top:20px; margin-left:20px; margin-right:20px;background:#e3f2fd !important;">
             <div style="margin-top:20px; margin-left:20px; margin-right:20px;">
                 <h1> Enter a City Name:</h1>
-                <p> works only for cities in Israel (City Name must be in Hebrew)</p>
+                <p> works only for cities in Israel</p>
                 <br>
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -54,9 +63,15 @@
 
                 <form action="{{url_for('city')}}" method='POST'>
 
-                    <p>Name: <input type='text' size='20' name='name'></p>
-
-                    <input type='submit' value='Submit'>
+                    <label>Choose a City from this list:
+                        <input name="name" list="cities" name="myCity"/></label>
+                    <datalist id="cities">
+                        {% for city in city_list %}
+                        <p>{{city}}</p>
+                        <option value='{{city}}'>
+                            {% endfor %}
+                    </datalist>
+                    <input class="btn btn-primary" type='submit' value='Submit'>
 
                 </form>
                 <br>

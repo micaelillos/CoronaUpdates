@@ -16,8 +16,27 @@ def get_value(x):
     while x[i] in numbers:
         num += x[i]
         i += 1
+
     num = num.split('.')
-    return int(num[0]) + int(num[1])*100
+    if len(num) > 1:
+        return int(num[0]) + int(num[1])*100
+    else:
+        num = ''
+        numbers = ['/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        if x[0] in numbers:
+            num += x[0]
+        i = 1
+        while x[i] in numbers:
+            num += x[i]
+            i += 1
+
+        num = num.split('/')
+
+        if len(num) > 1:
+            return int(num[0]) + int(num[1]) * 100
+
+        else:
+            return 0
 
 
 def city_places(city):
@@ -25,7 +44,7 @@ def city_places(city):
 
     result = requests.get(stre)
     src = result.content
-    soup = BeautifulSoup(src, 'html5lib')
+    soup = BeautifulSoup(src, 'lxml')
     links = soup.find_all("div")
     page = ''
     for link in links:

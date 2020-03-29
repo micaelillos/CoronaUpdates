@@ -15,6 +15,12 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <title>Information</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:900&display=swap" rel="stylesheet">
+    <style>
+        .navbar-brand{
+font-family: 'Nunito', sans-serif;
+}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -29,14 +35,14 @@
             <li class="nav-item"><a class="nav-link" href="{{url_for('country')}}">Country</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('city')}}">City</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('email_alerts')}}">Email Alerts</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('info')}}">Info</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{{url_for('info')}}">Info</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About</a></li>
         </ul>
     </div>
 </nav>
 <div class="row">
     <div class="col">
-        <div class="jumbotron jumbotron-fluid " style="margin-top:20px; margin-left:20px; margin-right:20px;">
+        <div class="jumbotron jumbotron-fluid " style="margin-top:20px; margin-left:20px; margin-right:20px;background:#e3f2fd !important;">
             <div class="lead" style="margin-left:20px;">
                 <h1>Basic protective measures against the new coronavirus</h1>
 

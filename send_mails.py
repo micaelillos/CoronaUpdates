@@ -2,8 +2,11 @@ from scraping import scrape
 from lists import get_list_of_cities, get_list_of_places
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from city_scraping import city_places, get_value
 import os
 import smtplib
+from datetime import date
+import datetime
 
 
 class send_mails:
@@ -11,9 +14,42 @@ class send_mails:
         pass
 
 
-def send_all_mails(update_list=False):
-    scrape()
+def get_date_value():
 
+    last = date.today() - datetime. timedelta(days=5)
+    last = str(last).replace('-', '.')[5:]
+    last = last.split('.')
+    last_value = int(last[0]) * 100 + int(last[1])
+    return last_value
+
+
+def send_all_mails(update_list=False):
+    file = open('mail_list.txt', 'r')
+    address = file.readline()
+    city_name = file.readline()
+    last_date = get_date_value()
+    while address != '':
+        address = address[:-1]
+        city_name = city_name[:-1]
+        body = f'List of new places in {city_name}: \n'
+        places = city_places(city_name)
+        send = False
+        for place in places:
+            if get_value(place) < last_date:
+                break
+            body += place + '\n'
+            send = True
+
+        if send:
+            send_mail(str(body), address)
+
+        address = file.readline()
+        city_name = file.readline()
+
+    file.close()
+
+    # ---------
+    ''''
     old_list = set(get_list_of_places())
     new_list = get_list_of_places('list_of_new_places')
     list_of_cities = get_list_of_cities()
@@ -55,11 +91,7 @@ def send_all_mails(update_list=False):
         elif len(words) > 1 and words[-2] + ' ' + words[-1] in list_of_cities:
             city = words[-2] + ' ' + words[-1]
             list_of_places_per_city[city].append(place)
-    ''''
-    for city in list_of_cities:
-        if list_of_places_per_city[city]:
-            print(list_of_places_per_city[city])
-    '''
+    
     file = open('mail_list.txt', 'r')
     address = file.readline()
     city_name = file.readline()
@@ -90,8 +122,8 @@ def send_all_mails(update_list=False):
             if line not in old_places:
                 file.write(line)
                 file.writelines('\n')
-
-        file.close()
+    '''
+    file.close()
 
 
 def send_mail(body, address):

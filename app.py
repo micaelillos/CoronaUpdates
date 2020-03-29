@@ -13,22 +13,6 @@ global glo_data
 global time_checked
 global top_countries
 app = Flask(__name__)
-arr = [1, 2, 3]
-posts = [
-    {
-        'author': 'corey',
-        'title': 'Blog post 1',
-        'content': 'iwkjdiwdiwndiwndkiwndw',
-        'date': 'NOW'
-    },
-    {
-        'author': 'david',
-        'title': 'Blog post 2',
-        'content': 'iwkjdiwdiwndiwndkiwndw',
-        'date': '2 yars ago'
-    }
-
-]
 
 
 def remove_comas(num):
@@ -48,13 +32,14 @@ def update_data(ip):
     first_time = False
     try:
         glo_data[ip]
-    except KeyError:
+    except (KeyError, NameError):
         first_time = True
+
     if first_time or t.time() - time_checked[ip] > 600:
-        da = scraping_details.coronatime('israel')
+        da = scraping_details.coronatime('')
         last_country_data[ip] = da
 
-        israel_data[ip] = last_country_data
+        israel_data[ip] = last_country_data[ip]
         glo_data[ip] = scraping_details.glo()
         top_countries[ip] = scraping_details.getop()
         time_checked[ip] = t.time()
@@ -68,13 +53,11 @@ def index():
     global israel_data
     global glo_data
     arr = israel_data[ip]
-    arr = arr[ip]
     glo = glo_data[ip]
     # adding death percentage
     t = remove_comas(glo[0])
     d = remove_comas(glo[1])
-    glo.append('{0:.2f}'.format(d/t*100))
-
+    glo.append('{0:.2f}'.format(d / t * 100))
     return render_template('index.html', arr=arr, glo=glo)
 
 
@@ -89,8 +72,7 @@ def country(see_more=''):
         except:
             c = request.form['load_more_data']
             user_top_countries = top_countries[ip]
-            text = user_top_countries[(int(c) - 1) * 10]
-
+            text = user_top_countries[(int(c) - 1) * 11]
 
         arr = scraping_details.coronatime(text)
         last_country_data[ip] = arr
@@ -105,19 +87,30 @@ def country(see_more=''):
 def city():  # city in israel
     if request.method == 'POST':
         city_name = request.form['name']
+
+        if city_name not in get_list_of_cities():  # check if city is a valid city
+            msg = 'Not a Valid City'
+            return render_template('city.html', msg=msg, city_list=get_list_of_cities())
+
+        city_name = city_name.lower()
+        city_name = city_name.replace(' ', '-')
+        # special cases
+        if city_name == 'tel-aviv':
+            city_name = city_name.replace('-', '')
+        if city_name == 'rishon-lezion':
+            city_name = '-' + city_name
+
         print(city_name)
         places = city_places(city_name)
         msg = 'List of places in ' + city_name + ':'
-        if not places:
+
+        if not places:  # check if there are places in city
             msg = 'no places in ' + city_name
-        if places is None:
-            msg = 'not a valid city'
-            places = []
 
-        return render_template('city.html', places=places, msg=msg)
+        return render_template('city.html', places=places, msg=msg, city_list=get_list_of_cities())
 
-    else:
-        return render_template('city.html')
+    else:  # in case of GET request
+        return render_template('city.html', city_list=get_list_of_cities())
 
 
 @app.route('/email/', methods=['GET', 'POST'])
@@ -133,7 +126,7 @@ def email_alerts():
             file.write(address + '\n' + city_name + '\n')
             flash('Email added!')
 
-    return render_template('emailalerts.html')
+    return render_template('emailalerts.html', city_list=get_list_of_cities())
 
 
 @app.route('/info/')
@@ -168,3 +161,5 @@ if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
+
+
