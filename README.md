@@ -12,7 +12,6 @@
 This is a web app written in python which gives the user global stats, country stats and even country stats.
 The web app also alerts the user by email everytime their is a change in their city.
 
-<a href="http://www.coronaupdate.ml/"> Live Version <a/>
 
 # Main Page
 <p align=center>
