@@ -1,6 +1,6 @@
 gunicorn==19.10.0
 beautifulsoup4==4.8.2
-certifi==2019.11.28
+certifi==2022.12.7
 chardet==3.0.4
 click==7.1.1
 Flask==1.1.1
